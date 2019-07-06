@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_album_detail.*
 import kotlinx.android.synthetic.main.album_detail_fragment.*
 import kotlinx.android.synthetic.main.artist_list_fragment.*
 import kotlinx.android.synthetic.main.artist_list_fragment.recycler_view
+import java.util.*
 import javax.inject.Inject
 
 class AlbumDetailFragment : DaggerFragment() {
@@ -62,7 +63,16 @@ class AlbumDetailFragment : DaggerFragment() {
 
     private fun observeData() {
         viewModel.trackList_.observe(this, Observer {
-            trackListAdapter.submitList(it)
+            val elements: ArrayList<Any> = ArrayList()
+            val groupedTransactions = it.groupBy { it.disk_number }.toSortedMap()
+            elements.clear()
+            groupedTransactions.let { sortedMap ->
+                for (group in sortedMap) {
+                    elements.add(group.key)
+                    elements.addAll(group.value.sortedBy { it.disk_number })
+                }
+            }
+            trackListAdapter.submitList(elements)
             recycler_view.visibility = View.VISIBLE
         })
 
