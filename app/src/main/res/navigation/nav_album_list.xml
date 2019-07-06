@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            app:startDestination="@id/album_list_fragment"
+            android:id="@+id/nav_album_list">
+    <fragment
+            android:id="@+id/album_list_fragment"
+            android:name="com.example.musicapp.ui.albums.albumslist.AlbumListFragment"
+            tools:layout="@layout/album_list_fragment">
+
+        <action android:id="@+id/album_fragment_to_album_details_activity"
+                app:destination="@id/album_details_activity"/>
+    </fragment>
+
+    <activity
+            android:id="@+id/album_details_activity"
+            android:name="com.example.musicapp.ui.albums.albumdetail.AlbumDetailActivity"
+            tools:layout="@layout/album_detail_fragment"/>
+</navigation>
