@@ -3,11 +3,12 @@ package com.example.musicapp.data.network
 import com.example.musicapp.data.model.Album
 import com.example.musicapp.data.model.Artist
 import com.example.musicapp.data.model.BaseResponse
+import com.example.musicapp.data.model.Track
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
-class DataRepo @Inject constructor(private val service: RemoteService){
+class DataRepo @Inject constructor(private val service: RemoteService) {
     companion object {
         const val LIMIT = 50
     }
@@ -19,6 +20,11 @@ class DataRepo @Inject constructor(private val service: RemoteService){
 
     fun fetchAlbumsByArtist(offset: Int, artistId: String): Single<BaseResponse<List<Album>>> {
         return service.fetchAlbumsByArtist(artistId, offset, LIMIT)
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun fetchAlbumTracks(offset: Int, artistId: String): Single<BaseResponse<List<Track>>> {
+        return service.fetchAlbumTracks(artistId, offset, LIMIT)
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

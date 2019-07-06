@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/track_item_view_height">
+    <TextView
+            android:id="@+id/track_number_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            tools:text="1"
+            android:padding="@dimen/padding_normal"
+            android:textColor="@android:color/darker_gray"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/track_artist_view_margin_start">
+
+        <TextView
+                android:id="@+id/track_title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Hunger Strike"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:layout_marginStart="@dimen/margin_normal"/>
+
+        <TextView
+                android:id="@+id/track_artist_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Chris Cornell and Eddie Vedder"
+                android:textStyle="normal"
+                android:textColor="@android:color/darker_gray"
+                android:layout_marginStart="@dimen/margin_normal"/>
+    </LinearLayout>
+
+</RelativeLayout>
