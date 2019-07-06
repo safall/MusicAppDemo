@@ -10,7 +10,7 @@
             android:name="com.example.musicapp.ui.artist.ArtistListFragment"
             tools:layout="@layout/artist_list_fragment">
 
-        <action android:id="@+id/search_fragment_to_albums_activity"
+        <action android:id="@+id/artist_list_fragment_to_album_list_activity"
                 app:destination="@id/album_list_activity"/>
     </fragment>
 
