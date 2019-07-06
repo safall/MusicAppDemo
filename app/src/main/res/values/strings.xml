@@ -2,4 +2,7 @@
     <string name="app_name">MusicAppSample</string>
     <string name="search_artist">Search Artist</string>
     <string name="empty_result">No results found for the query</string>
+    <string name="album">Album</string>
+    <string name="empty_album_result">No albums found</string>
+    <string name="album_image">Album Image</string>
 </resources>

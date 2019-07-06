@@ -2,7 +2,9 @@ package com.example.musicapp.ui.albums.albumslist
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
 import com.example.musicapp.R
+import kotlinx.android.synthetic.main.activity_album_list.*
 
 class AlbumListActivity : AppCompatActivity() {
     companion object {
@@ -17,8 +19,15 @@ class AlbumListActivity : AppCompatActivity() {
             return bundle
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_album_list)
+        setSupportActionBar(tool_bar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setTitle(R.string.album)
     }
+
+    override fun onSupportNavigateUp() =
+        NavHostFragment.findNavController(host_fragment).navigateUp()
 }
