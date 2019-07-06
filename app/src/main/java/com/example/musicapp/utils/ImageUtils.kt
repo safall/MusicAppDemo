@@ -11,4 +11,12 @@ object ImageUtils {
             .transform(CircleTransform())
             .into(imageView)
     }
+
+    fun loadImage(url: String, imageView: ImageView) {
+        Picasso.get()
+            .load(url)
+            .fit()
+            .into(imageView)
+    }
+
 }
