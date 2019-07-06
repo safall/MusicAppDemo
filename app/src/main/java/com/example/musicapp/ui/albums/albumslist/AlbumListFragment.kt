@@ -2,6 +2,7 @@ package com.example.musicapp.ui.albums.albumslist
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -42,7 +43,7 @@ class AlbumListFragment : DaggerFragment() {
                 val album = item as Album
                 val bundle = AlbumDetailActivity.createBundle(album, viewModel.artistName)
                 NavHostFragment.findNavController(host_fragment)
-                    .navigate(R.id.search_fragment_to_albums_activity, bundle)
+                    .navigate(R.id.album_fragment_to_album_details_activity, bundle)
             }
         }, viewModel.artistName)
 
@@ -83,6 +84,16 @@ class AlbumListFragment : DaggerFragment() {
             search_error_text_view.visibility = View.VISIBLE
             recycler_view.visibility = View.GONE
         })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                activity?.finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

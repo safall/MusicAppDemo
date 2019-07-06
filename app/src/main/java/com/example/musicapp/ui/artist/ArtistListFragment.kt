@@ -42,7 +42,7 @@ class ArtistListFragment : DaggerFragment() {
                 val artist = item as Artist
                 val bundle = AlbumListActivity.createBundle(artist.id, artist.name)
                 NavHostFragment.findNavController(host_fragment)
-                    .navigate(R.id.search_fragment_to_albums_activity, bundle)
+                    .navigate(R.id.artist_list_fragment_to_album_list_activity, bundle)
             }
         })
         observeData()
