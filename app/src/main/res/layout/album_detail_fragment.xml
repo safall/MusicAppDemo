@@ -11,14 +11,6 @@
 
             tools:context=".album_details.AlbumDetailsFragment">
 
-        <ImageView
-                android:id="@+id/ic_arrow_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="@string/content_description_back_arrow"
-                android:layout_marginStart="@dimen/margin_normal"
-                android:layout_marginTop="@dimen/margin_normal"/>
 
         <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
@@ -86,5 +78,14 @@
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+                android:id="@+id/ic_arrow_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/content_description_back_arrow"
+                android:layout_marginStart="@dimen/margin_normal"
+                android:layout_marginTop="@dimen/margin_normal"/>
     </RelativeLayout>
 </layout>

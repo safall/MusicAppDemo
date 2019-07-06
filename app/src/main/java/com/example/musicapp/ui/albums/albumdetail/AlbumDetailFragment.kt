@@ -8,13 +8,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.fragment.NavHostFragment
 import com.example.musicapp.R
 import com.example.musicapp.data.model.Album
 import com.example.musicapp.data.network.DataRepo
 import com.example.musicapp.utils.ImageUtils
 import dagger.android.support.DaggerFragment
-import kotlinx.android.synthetic.main.activity_album_detail.*
 import kotlinx.android.synthetic.main.album_detail_fragment.*
 import kotlinx.android.synthetic.main.artist_list_fragment.*
 import kotlinx.android.synthetic.main.artist_list_fragment.recycler_view
@@ -52,9 +50,7 @@ class AlbumDetailFragment : DaggerFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ic_arrow_back.setOnClickListener {
-            NavHostFragment.findNavController(host_fragment).popBackStack()
-        }
+        ic_arrow_back.setOnClickListener { requireActivity().finish() }
         ImageUtils.loadImage(viewModel.album.cover_xl, album_cover_image_view)
         album_title_text_view.text = viewModel.album.title
         album_artist_text_view.text = viewModel.artistName
