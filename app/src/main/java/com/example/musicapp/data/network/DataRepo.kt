@@ -7,9 +7,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import javax.inject.Inject
 
 class DataRepo @Inject constructor(private val service: RemoteService){
+    companion object {
+        const val LIMIT = 50
+    }
 
     fun searchArtists(offset: Int, query: String): Single<BaseResponse<List<Artist>>> {
-        return service.searchArtists(query, offset)
+        return service.searchArtists(query, offset, LIMIT)
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

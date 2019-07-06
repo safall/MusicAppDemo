@@ -13,5 +13,5 @@ interface RemoteService {
     }
 
     @GET("search/artist?")
-    fun searchArtists(@Query("q") query: String, @Query("index") index: Int): Single<BaseResponse<List<Artist>>>
+    fun searchArtists(@Query("q") query: String, @Query("index") index: Int, @Query("limit") limit: Int): Single<BaseResponse<List<Artist>>>
 }
