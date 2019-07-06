@@ -31,7 +31,6 @@ class ArtistListFragment : DaggerFragment() {
     private lateinit var viewModel: ArtistListViewModel
     private lateinit var binding: ViewDataBinding
     private lateinit var artistAdapter: ArtistListAdapter
-    private var arrayList = ArrayList<Artist>()
     var queryValue: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -82,7 +81,6 @@ class ArtistListFragment : DaggerFragment() {
                 override fun onQueryTextChange(query: String): Boolean {
                     viewModel.subject.onNext(query)
                     artistAdapter.submitList(null)
-                    arrayList.clear()
                     queryValue = query
                     return false
                 }
@@ -91,10 +89,9 @@ class ArtistListFragment : DaggerFragment() {
     }
 
     private fun observeData() {
-        viewModel.artistList.observe(this, Observer<List<Artist>> {
+        viewModel.artistList_.observe(this, Observer<List<Artist>> {
             if (!queryValue.isNullOrEmpty()) {
-                arrayList.addAll(it)
-                artistAdapter.submitList(arrayList)
+                artistAdapter.submitList(it)
                 recycler_view.visibility = View.VISIBLE
             }
         })

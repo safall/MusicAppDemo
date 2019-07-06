@@ -23,11 +23,6 @@ class ArtistListViewModel : ViewModel() {
     val artistList_: LiveData<List<Artist>>
         get() = artistList
 
-    val loadMoreartistList: MutableLiveData<List<Artist>> = MutableLiveData()
-    val loadMoreartistList_: LiveData<List<Artist>>
-        get() = loadMoreartistList
-
-    var dataSize: Int = 0
     val queryLiveData = MutableLiveData<String>()
 
     init {
@@ -54,7 +49,6 @@ class ArtistListViewModel : ViewModel() {
                 if (result.data.isEmpty()) {
                     isEmpty.postValue(true)
                 } else {
-                    dataSize = result.data.size
                     artistList.postValue(result.data)
                 }
             }) {
