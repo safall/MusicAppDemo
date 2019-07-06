@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.row_item_track_header.view.*
 
 class TrackHeaderViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
 
-    private val discInfoTextView: TextView = view.disc_info_text_view
+    private val discInfoTextView: TextView = view.header_text_view
 
     fun set(discNumber: Int) {
         discInfoTextView.text = view.context.getString(R.string.volume, discNumber)
