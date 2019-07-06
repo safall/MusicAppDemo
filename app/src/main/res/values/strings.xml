@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MusicAppSample</string>
+    <string name="search_artist">Search Artist</string>
+    <string name="empty_result">No results found for the query</string>
 </resources>

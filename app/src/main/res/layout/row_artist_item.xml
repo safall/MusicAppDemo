@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/artist_item_view_height">
+    <ImageView
+            android:id="@+id/artist_image_view"
+            android:layout_width="@dimen/artist_row_item_image_dimen"
+            android:layout_height="@dimen/artist_row_item_image_dimen"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher_round"/>
+
+    <TextView
+            android:id="@+id/artist_name_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Chris Cornell"
+            android:layout_toEndOf="@id/artist_image_view"
+            android:layout_centerVertical="true"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginStart="@dimen/margin_normal"/>
+</RelativeLayout>
