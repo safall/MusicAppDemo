@@ -59,6 +59,7 @@ dependencies {
     implementation "com.jakewharton.rxrelay2:rxrelay:$versions.relayVersion"
 
     implementation "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
+    implementation 'android.arch.paging:runtime:1.0.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

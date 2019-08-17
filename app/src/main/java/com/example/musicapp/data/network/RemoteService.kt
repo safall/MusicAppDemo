@@ -19,7 +19,7 @@ interface RemoteService {
     fun searchArtists(@Query("q") query: String, @Query("index") index: Int, @Query("limit") limit: Int): Single<BaseResponse<List<Artist>>>
 
     @GET("artist/{id}/albums")
-    fun fetchAlbumsByArtist(@Path("id") query: String, @Query("index") index: Int, @Query("limit") limit: Int): Single<BaseResponse<List<Album>>>
+    fun fetchAlbumsByArtist(@Path("id") query: String, @Query("index") index: Int): Single<BaseResponse<List<Album>>>
 
     @GET("album/{id}/tracks")
     fun fetchAlbumTracks(@Path("id") query: String, @Query("index") index: Int, @Query("limit") limit: Int): Single<BaseResponse<List<Track>>>

@@ -22,8 +22,10 @@ class AlbumViewHolder(view: View, private val itemCallback: AdapterCallback) :
         itemCallback.onItemClicked(data)
     }
 
-    fun set(artist: Album, artistName: String) {
-        data = artist
+    fun set(artist: Album?, artistName: String) {
+        artist?.let {
+            data = it
+        }
         artistNameTextView.text = artistName
         albumNameTextView.text = data.title
         ImageUtils.loadImage(data.cover_big, albumImageView)
