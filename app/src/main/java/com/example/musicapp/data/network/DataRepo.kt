@@ -19,7 +19,7 @@ class DataRepo @Inject constructor(private val service: RemoteService) {
     }
 
     fun fetchAlbumsByArtist(offset: Int, artistId: String): Single<BaseResponse<List<Album>>> {
-        return service.fetchAlbumsByArtist(artistId, offset, LIMIT)
+        return service.fetchAlbumsByArtist(artistId, offset)
             .observeOn(AndroidSchedulers.mainThread())
     }
 

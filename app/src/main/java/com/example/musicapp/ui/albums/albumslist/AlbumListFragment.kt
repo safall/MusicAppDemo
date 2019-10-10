@@ -12,6 +12,7 @@ import androidx.navigation.fragment.NavHostFragment
 import com.example.musicapp.R
 import com.example.musicapp.data.model.Album
 import com.example.musicapp.data.network.DataRepo
+import com.example.musicapp.data.network.RemoteService
 import com.example.musicapp.databinding.AlbumListFragmentBinding
 import com.example.musicapp.ui.albums.albumdetail.AlbumDetailActivity
 import com.example.musicapp.utils.AdapterCallback
@@ -24,6 +25,8 @@ import javax.inject.Inject
 class AlbumListFragment : DaggerFragment() {
     @Inject
     lateinit var dataSource: DataRepo
+    @Inject
+    lateinit var service: RemoteService
     private lateinit var viewModel: AlbumListViewModel
     private lateinit var binding: AlbumListFragmentBinding
     private lateinit var albumListAdapter: AlbumListAdapter
@@ -33,6 +36,7 @@ class AlbumListFragment : DaggerFragment() {
         setHasOptionsMenu(true)
         viewModel = ViewModelProviders.of(this).get(AlbumListViewModel::class.java)
         viewModel.dataSource = dataSource
+        viewModel.service = service
         val artistId = requireActivity().intent.getStringExtra(AlbumListActivity.ARG_ARTIST_ID)
         val artistName = requireActivity().intent.getStringExtra(AlbumListActivity.ARG_ARTIST_NAME)
         viewModel.artistId = artistId
@@ -46,9 +50,9 @@ class AlbumListFragment : DaggerFragment() {
                     .navigate(R.id.album_fragment_to_album_details_activity, bundle)
             }
         }, viewModel.artistName)
+        viewModel.loadAlbums()
 
         observeData()
-        viewModel.loadAlbums()
     }
 
     override fun onCreateView(
@@ -68,7 +72,8 @@ class AlbumListFragment : DaggerFragment() {
     }
 
     private fun observeData() {
-        viewModel.albumList_.observe(this, Observer {
+        viewModel.albumList_?.observe(this, Observer {
+            recycler_view.scrollToPosition(0)
             albumListAdapter.submitList(it)
             recycler_view.visibility = View.VISIBLE
         })
